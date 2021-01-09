@@ -10,7 +10,7 @@ namespace The_Evolution_Of_Trust
 {
     class Slider : TrackBar
     {
-        public Slider(PersonTypeInfo info, int value)
+        public Slider(PlayerTypeInfo info, int value)
         {
             _name = info.TypeName;
             _type_id = info.TypeId;

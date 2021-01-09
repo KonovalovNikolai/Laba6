@@ -8,7 +8,7 @@ namespace The_Evolution_Of_Trust
 {
     class ExchangeMachine
     {
-        public void Exchange(Person pers1, Person pers2)
+        public void Exchange(Player pers1, Player pers2)
         {
             bool des1 = CheckChance(pers1.MakeADecision());
             bool des2 = CheckChance(pers2.MakeADecision());

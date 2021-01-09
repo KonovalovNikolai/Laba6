@@ -23,12 +23,11 @@ namespace The_Evolution_Of_Trust
                 _persons_number += _population[i];
                 for (int j = 0; j < _population[i]; j++)
                 {
-                    _storage.Add(Creator.Create(i));
+                    _storage.Add(PlayersCreator.Create(i));
                 }
             }
 
         }
-
 
         public void ControlPopulation(int value, int id)
         {
@@ -98,40 +97,15 @@ namespace The_Evolution_Of_Trust
             }
         }
 
-        public void Step()
-        {
-            if (_count == _persons_number)
-            {
-                _storage.Selection(_selected_number);
-                _storage.ResetScore();
-                _count = 0;
-                return;
-            }
-            for (; _count < _persons_number; _count++)
-            {
-                for (int i = _count + 1; i < _persons_number; i++)
-                {
-                    PlayRounds(_storage[_count], _storage[i]);
-                }
-            }
-        }
         //public void Step()
         //{
-        //    Console.WriteLine(_persons_number);
         //    if (_count == _persons_number)
         //    {
-        //        DeleteWorst();
-        //        _count = -1;
-        //        return;
-        //    }
-        //    if (_count == -1)
-        //    {
-        //        AddFromTop();
+        //        _storage.Selection(_selected_number);
         //        _storage.ResetScore();
         //        _count = 0;
         //        return;
         //    }
-        //    Console.WriteLine($"{_count}");
         //    for (; _count < _persons_number; _count++)
         //    {
         //        for (int i = _count + 1; i < _persons_number; i++)
@@ -140,19 +114,45 @@ namespace The_Evolution_Of_Trust
         //        }
         //    }
         //}
-        public List<Person> GetPersonsSortedByName()
+        public void Step()
+        {
+            Console.WriteLine(_persons_number);
+            if (_count == _persons_number)
+            {
+                _storage.SortByScore();
+                _storage.DeleteNumberOfWorst(_selected_number);
+                _count = -1;
+                return;
+            }
+            if (_count == -1)
+            {
+                _storage.AddNewFromTop(_selected_number);
+                _storage.ResetScore();
+                _count = 0;
+                return;
+            }
+            Console.WriteLine($"{_count}");
+            for (; _count < _persons_number; _count++)
+            {
+                for (int i = _count + 1; i < _persons_number; i++)
+                {
+                    PlayRounds(_storage[_count], _storage[i]);
+                }
+            }
+        }
+        public List<Player> GetPersonsSortedByName()
         {
             return _storage.GetPersonsSortedByName();
         }
 
-        private void PlayRounds(Person pers1, Person pers2)
+        private void PlayRounds(Player pers1, Player pers2)
         {
             for (int i = 0; i < _rounds_number; i++)
             {
                 _exchange_machine.Exchange(pers1, pers2);
             }
-            pers1.ClearMemory();
-            pers2.ClearMemory();
+            pers1.ResetPlayerMemory();
+            pers2.ResetPlayerMemory();
         }
 
         private ListStorage _storage = new ListStorage();

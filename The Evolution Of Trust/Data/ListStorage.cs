@@ -9,21 +9,16 @@ namespace The_Evolution_Of_Trust
     class ListStorage
     {
         // Добавление игрока в хранилище.
-        public void Add(Person pers)
+        public void Add(Player pers)
         {
             _persons_list.Add(pers);
         }
 
-        ////Удаление и добавление указаного числа игроков
-        ////Для корректной работы число должно быть не больше
-        ////половины количества игроков
-        //public void Selection(int number)
-        //{
-        //    _persons_list.Sort((x, y) => x.Score.CompareTo(y.Score));
-
-        //    DeleteNumberOfWorst(number);
-        //    AddNewFromTop(number);
-        //}
+        // Отсортировать хранилище по счёту
+        public void SortByScore()
+        {
+            _persons_list.Sort((x, y) => x.Score.CompareTo(y.Score));
+        }
 
         // Обнуление счёта игроков.
         public void ResetScore()
@@ -41,36 +36,34 @@ namespace The_Evolution_Of_Trust
         }
 
         // Получить список всех игроков.
-        public List<Person> GetAllPersons()
+        public List<Player> GetAllPersons()
         {
-            return new List<Person>(_persons_list);
+            return new List<Player>(_persons_list);
         }
 
         // Получить список всех игроков отсортированный по именам.
-        public List<Person> GetPersonsSortedByName()
+        public List<Player> GetPersonsSortedByName()
         {
             return _persons_list.OrderBy(u => u.TypeName).ToList();
         }
 
         // Получить список всех игроков отсортированный по счёту.
-        public List<Person> GetPersonsSortedByScore()
+        public List<Player> GetPersonsSortedByScore()
         {
             return _persons_list.OrderBy(u => u.Score).ToList();
         }
 
         // Получение игркоа по индексу.
-        public Person this[int index]
+        public Player this[int index]
         {
             get { return _persons_list[index]; }
         }
 
-
-        // Удаление указанное количество игроков с наименьшим счётом.
+        // Удаление указанного количества игроков с наименьшим счётом.
         // Если у игроков одинаковые счета, то удаляются случайные из них.
         // - int number - количество удаляемых игроков
-        private void DeleteNumberOfWorst(int number)
+        public void DeleteNumberOfWorst(int number)
         {
-            //_persons_list.Sort((x, y) => x.Score.CompareTo(y.Score));
             int lowest_score = _persons_list[0].Score;
             int i = 0;
             for (; number > 0 && i < _persons_list.Count; i++)
@@ -79,15 +72,24 @@ namespace The_Evolution_Of_Trust
                 {
                     continue;
                 }
-                DeleteRange(ref i, ref number);
+                DeleteRange(i, ref number);
                 lowest_score = _persons_list[i].Score;
+                i = 0;
             }
             if (number > 0)
             {
-                DeleteRange(ref i, ref number);
+                DeleteRange(i, ref number);
             }
         }
-        private void DeleteRange(ref int end, ref int number)
+
+        // Удаление игроков из указанного промежутка.
+        // Если промежуток больше числа удаляемых игроков,
+        // то выбираются случайные игроки из этого промежутка. 
+        // Начало промежутка всегда 0.
+        // Игроки удаляются из промежутка [0, end).
+        // - int end - конец промежутка.
+        // - ref int number - количество удаляемых игроков.
+        private void DeleteRange(int end, ref int number)
         {
             if (end <= number)
             {
@@ -105,7 +107,11 @@ namespace The_Evolution_Of_Trust
             }
         }
 
-        private void AddNewFromTop(int number)
+        // Добавление указанного количества игроков.
+        // Новые игроки создаются из игроков с лучшим счётом.
+        // Если у игроков одинаковые счета, то создаются по случайным из них.
+        // - int number - количество удаляемых игроков
+        public void AddNewFromTop(int number)
         {
             int best_score = _persons_list[_persons_list.Count - 1].Score;
             int i = _persons_list.Count - 2;
@@ -122,6 +128,14 @@ namespace The_Evolution_Of_Trust
             }
             AddRange(ref start, ref i, ref number);
         }
+
+        // Добавление игроков из указанного промежутка.
+        // Если промежуток больше числа добавляемых игроков,
+        // то выбираются случайные игроки из этого промежутка. 
+        // Игроки добавляются из промежутка [start, end].
+        // - ref int start - начало промежутка
+        // - ref int end - конец промежутка.
+        // - ref int number - количество удаляемых игроков.
         private void AddRange(ref int start, ref int end, ref int number)
         {
             if (start - end <= number)
@@ -144,6 +158,7 @@ namespace The_Evolution_Of_Trust
             }
         }
 
-        private List<Person> _persons_list = new List<Person>();
+        //Хранилище игроков
+        private List<Player> _persons_list = new List<Player>();
     }
 }

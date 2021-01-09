@@ -46,17 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\Creator.cs" />
+    <Compile Include="Data\PlayersCreator.cs" />
     <Compile Include="Data\ExchangeMachine.cs" />
     <Compile Include="Data\Game.cs" />
     <Compile Include="Data\ListStorage.cs" />
+    <Compile Include="Data\Players\PlayerTypeInfo.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Data\Persons.cs" />
+    <Compile Include="Data\Players\Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Data\RRandom.cs" />

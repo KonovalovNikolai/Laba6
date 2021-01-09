@@ -74,7 +74,7 @@ namespace The_Evolution_Of_Trust
 
         private void DrawPopulationSliders()
         {
-            PersonTypeInfo[] PersonTypeInfos = {
+            PlayerTypeInfo[] PlayerTypeInfos = {
                 Trustful.Info,
                 Cheater.Info,
                 Copycat.Info,
@@ -89,7 +89,7 @@ namespace The_Evolution_Of_Trust
             {
                 for (int x = 0; x < PopulatioTableLayoutPanel.RowCount; x++)
                 {
-                    Slider slider = new Slider(PersonTypeInfos[i], _game.Population[PersonTypeInfos[i].TypeId]);
+                    Slider slider = new Slider(PlayerTypeInfos[i], _game.Population[PlayerTypeInfos[i].TypeId]);
                     _sliders.Add(slider);
                     slider.Scroll += Slider_Scroll;
                     PopulatioTableLayoutPanel.Controls.Add(slider.Table, x, y);

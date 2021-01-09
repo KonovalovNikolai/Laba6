@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace The_Evolution_Of_Trust
 {
-    class Creator
+    class PlayersCreator
     {
-        public static Person Create(int id)
+        public static Player Create(int id)
         {
             switch (id)
             {

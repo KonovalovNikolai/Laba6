@@ -7,37 +7,19 @@ using System.Drawing;
 
 namespace The_Evolution_Of_Trust
 {
-    class PersonTypeInfo
+    abstract class Player
     {
-        public PersonTypeInfo(int id, string name, string description, Color color)
-        {
-            _type_color = color;
-            _type_id = id;
-            _type_name = name;
-            _type_description = description;
-        }
-
-        private string _type_name;
-        public string TypeName { get { return _type_name; } }
-
-        private string _type_description;
-        public string TypeDescription { get { return _type_description; } }
-
-        private int _type_id;
-        public int TypeId { get { return _type_id; } }
-
-        private Color _type_color;
-        public Color TypeColor { get { return _type_color; } }
-    }
-
-    abstract class Person
-    {
+        // Игрок принимает решение довериться или обмануть другого игрока.
+        // Разные типы игроков принимают решение по-разному.
         public abstract bool MakeADecision();
 
-        public abstract void ClearMemory();
+        // Вернуть игрока в начальное состояние.
+        public abstract void ResetPlayerMemory();
 
-        public abstract Person Create();
+        // Создать игрока своего типа.
+        public abstract Player Create();
 
+        // Счёт игрока.
         private int _score = 0;
         public int Score
         {
@@ -45,6 +27,9 @@ namespace The_Evolution_Of_Trust
             set { _score = value; }
         }
 
+        // Предыдущий ход противника.
+        // Многие типы игроков принимают решения
+        // операясь на этот поле.
         private bool _memory = true;
         public bool Memory
         {
@@ -52,54 +37,17 @@ namespace The_Evolution_Of_Trust
             set { _memory = value; }
         }
 
+        // Имя типа
         public abstract string TypeName { get; }
-        //public abstract int TypeId { get; }
+        // Цвет типа
         public abstract Color TypeColor { get; }
-
-        private bool _delete_mark = false;
-        public bool DeleteMark { 
-            get { return _delete_mark; }
-            set { _delete_mark = value; } 
-        }
     }
 
-    class Trustful : Person
-    {
-        static Trustful()
-        {
-            _info =  new PersonTypeInfo(_type_id, _type_name, _type_description, _type_color);
-        }
-
-        public override bool MakeADecision()
-        {
-            return true;
-        }
-
-        public override void ClearMemory() { }
-
-        public override Person Create()
-        {
-            return new Trustful();
-        }
-
-        private static PersonTypeInfo _info;
-        public static PersonTypeInfo Info { get { return _info; } }
-
-        private static int _type_id = 0;
-        private static string _type_name = "Trustful";
-        private static Color _type_color = Color.Pink;
-        private static string _type_description = 
-            "\"Давай будем лучшими друзьями!\"\nВсегда доверяется.";
-        public override string TypeName { get { return _type_name; } }
-        //public override int TypeId { get {return _type_id; } }
-        public override Color TypeColor { get {return _type_color; } }
-    }
-
-    class Cheater : Person
+    class Cheater : Player
     {
         static Cheater()
         {
-            _info = new PersonTypeInfo(_type_id, _type_name, _type_description, _type_color);
+            _info = new PlayerTypeInfo(_type_id, _type_name, _type_description, _type_color);
         }
 
         public override bool MakeADecision()
@@ -107,15 +55,15 @@ namespace The_Evolution_Of_Trust
             return false;
         }
 
-        public override void ClearMemory() { }
+        public override void ResetPlayerMemory() { }
 
-        public override Person Create()
+        public override Player Create()
         {
             return new Cheater();
         }
 
-        private static PersonTypeInfo _info;
-        public static PersonTypeInfo Info { get { return _info; } }
+        private static PlayerTypeInfo _info;
+        public static PlayerTypeInfo Info { get { return _info; } }
 
         private static int _type_id = 1;
         private static string _type_name = "Cheater";
@@ -128,11 +76,11 @@ namespace The_Evolution_Of_Trust
         public override Color TypeColor { get { return _type_color; } }
     }
 
-    class Copycat : Person
+    class Copycat : Player
     {
         static Copycat()
         {
-            _info = new PersonTypeInfo(_type_id, _type_name, _type_description, _type_color);
+            _info = new PlayerTypeInfo(_type_id, _type_name, _type_description, _type_color);
         }
 
         public override bool MakeADecision()
@@ -140,18 +88,18 @@ namespace The_Evolution_Of_Trust
             return Memory;
         }
 
-        public override void ClearMemory()
+        public override void ResetPlayerMemory()
         {
             Memory = true;
         }
 
-        public override Person Create()
+        public override Player Create()
         {
             return new Copycat();
         }
 
-        private static PersonTypeInfo _info;
-        public static PersonTypeInfo Info { get { return _info; } }
+        private static PlayerTypeInfo _info;
+        public static PlayerTypeInfo Info { get { return _info; } }
 
         private static int _type_id = 2;
         private static string _type_name = "Copycat";
@@ -163,11 +111,11 @@ namespace The_Evolution_Of_Trust
         public override Color TypeColor { get { return _type_color; } }
     }
 
-    class Grudger : Person
+    class Grudger : Player
     {
         static Grudger()
         {
-            _info = new PersonTypeInfo(_type_id, _type_name, _type_description, _type_color);
+            _info = new PlayerTypeInfo(_type_id, _type_name, _type_description, _type_color);
         }
 
         public override bool MakeADecision()
@@ -179,21 +127,21 @@ namespace The_Evolution_Of_Trust
             return !_was_deceived;
         }
 
-        public override void ClearMemory()
+        public override void ResetPlayerMemory()
         {
             Memory = true;
             _was_deceived = false;
         }
 
-        public override Person Create()
+        public override Player Create()
         {
             return new Grudger();
         }
 
         private bool _was_deceived = false;
 
-        private static PersonTypeInfo _info;
-        public static PersonTypeInfo Info { get { return _info; } }
+        private static PlayerTypeInfo _info;
+        public static PlayerTypeInfo Info { get { return _info; } }
 
         private static int _type_id = 3;
         private static string _type_name = "Grudger";
@@ -205,11 +153,11 @@ namespace The_Evolution_Of_Trust
         public override Color TypeColor { get { return _type_color; } }
     }
 
-    class Detective : Person
+    class Detective : Player
     {
         static Detective()
         {
-            _info = new PersonTypeInfo(_type_id, _type_name, _type_description, _type_color);
+            _info = new PlayerTypeInfo(_type_id, _type_name, _type_description, _type_color);
         }
 
         public override bool MakeADecision()
@@ -231,14 +179,14 @@ namespace The_Evolution_Of_Trust
             return false;
         }
 
-        public override void ClearMemory()
+        public override void ResetPlayerMemory()
         {
             Memory = true;
             _count = 0;
             _was_deceived = false;
         }
 
-        public override Person Create()
+        public override Player Create()
         {
             return new Detective();
         }
@@ -247,8 +195,8 @@ namespace The_Evolution_Of_Trust
         private int _count = 0;
         private bool _was_deceived = false;
 
-        private static PersonTypeInfo _info;
-        public static PersonTypeInfo Info { get { return _info; } }
+        private static PlayerTypeInfo _info;
+        public static PlayerTypeInfo Info { get { return _info; } }
 
         private static int _type_id = 4;
         private static string _type_name = "Detective";
@@ -261,11 +209,11 @@ namespace The_Evolution_Of_Trust
         public override Color TypeColor { get { return _type_color; } }
     }
 
-    class Imitator : Person
+    class Imitator : Player
     {
         static Imitator()
         {
-            _info = new PersonTypeInfo(_type_id, _type_name, _type_description, _type_color);
+            _info = new PlayerTypeInfo(_type_id, _type_name, _type_description, _type_color);
         }
 
         public override bool MakeADecision()
@@ -284,14 +232,14 @@ namespace The_Evolution_Of_Trust
             return true;
         }
 
-        public override void ClearMemory()
+        public override void ResetPlayerMemory()
         {
             Memory = true;
             _was_deceived_twice = false;
             _count = 0;
         }
 
-        public override Person Create()
+        public override Player Create()
         {
             return new Imitator();
         }
@@ -299,8 +247,8 @@ namespace The_Evolution_Of_Trust
         private bool _was_deceived_twice = false;
         private int _count = 0;
 
-        private static PersonTypeInfo _info;
-        public static PersonTypeInfo Info { get { return _info; } }
+        private static PlayerTypeInfo _info;
+        public static PlayerTypeInfo Info { get { return _info; } }
 
         private static int _type_id = 5;
         private static string _type_name = "Imitator";
@@ -313,11 +261,11 @@ namespace The_Evolution_Of_Trust
         public override Color TypeColor { get { return _type_color; } }
     }
 
-    class Simpleton : Person
+    class Simpleton : Player
     {
         static Simpleton()
         {
-            _info = new PersonTypeInfo(_type_id, _type_name, _type_description, _type_color);
+            _info = new PlayerTypeInfo(_type_id, _type_name, _type_description, _type_color);
         }
 
         public override bool MakeADecision()
@@ -329,21 +277,21 @@ namespace The_Evolution_Of_Trust
             return _last_move;
         }
 
-        public override void ClearMemory()
+        public override void ResetPlayerMemory()
         {
             Memory = true;
             _last_move = true;
         }
 
-        public override Person Create()
+        public override Player Create()
         {
             return new Simpleton();
         }
 
         private bool _last_move = true;
 
-        private static PersonTypeInfo _info;
-        public static PersonTypeInfo Info { get { return _info; } }
+        private static PlayerTypeInfo _info;
+        public static PlayerTypeInfo Info { get { return _info; } }
 
         private static int _type_id = 6;
         private static string _type_name = "Simpleton";
@@ -356,11 +304,11 @@ namespace The_Evolution_Of_Trust
         public override Color TypeColor { get { return _type_color; } }
     }
 
-    class Randomized : Person
+    class Randomized : Player
     {
         static Randomized()
         {
-            _info = new PersonTypeInfo(_type_id, _type_name, _type_description, _type_color);
+            _info = new PlayerTypeInfo(_type_id, _type_name, _type_description, _type_color);
         }
 
         public override bool MakeADecision()
@@ -368,17 +316,17 @@ namespace The_Evolution_Of_Trust
             return RRandom.CheckChance(_chance);
         }
 
-        public override void ClearMemory() { }
+        public override void ResetPlayerMemory() { }
 
-        public override Person Create()
+        public override Player Create()
         {
             return new Randomized();
         }
 
         private static double _chance = 0.5;
 
-        private static PersonTypeInfo _info;
-        public static PersonTypeInfo Info { get { return _info; } }
+        private static PlayerTypeInfo _info;
+        public static PlayerTypeInfo Info { get { return _info; } }
 
         private static int _type_id = 7;
         private static Color _type_color = Color.Red;
