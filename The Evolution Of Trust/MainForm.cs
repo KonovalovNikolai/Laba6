@@ -79,6 +79,7 @@ namespace The_Evolution_Of_Trust
                 current_angle += angle;
             }
         }
+        
         private void DrawPopulationSliders()
         {
             PlayerTypeInfo[] PlayerTypeInfos = {
@@ -96,7 +97,7 @@ namespace The_Evolution_Of_Trust
             {
                 for (int x = 0; x < PopulatioTableLayoutPanel.RowCount; x++)
                 {
-                    Slider slider = new Slider(PlayerTypeInfos[i], _game.Population[PlayerTypeInfos[i].TypeId]);
+                    Slider slider = new Slider(PlayerTypeInfos[i], _game.Population[i], _game.PopulationNumber);
                     _sliders.Add(slider);
                     slider.Scroll += Slider_Scroll;
                     PopulatioTableLayoutPanel.Controls.Add(slider.Table, x, y);
@@ -270,7 +271,7 @@ namespace The_Evolution_Of_Trust
             {
                 _game.Step();
                 DrawDeskPanel.Refresh();
-                Thread.Sleep(500);
+                Thread.Sleep(200);
             }
         }
 

@@ -10,7 +10,7 @@ namespace The_Evolution_Of_Trust
 {
     class Slider : TrackBar
     {
-        public Slider(PlayerTypeInfo info, int value)
+        public Slider(PlayerTypeInfo info, int value, int max)
         {
             _name = info.TypeName;
             _type_id = info.TypeId;
@@ -29,7 +29,8 @@ namespace The_Evolution_Of_Trust
             _name_lable.Dock = DockStyle.Fill;
             _table.Controls.Add(_name_lable, 0, 0);
 
-            this.Maximum = 30;
+            this.Minimum = 0;
+            this.Maximum = max;
             this.Value = value;
             this.LargeChange = 1;
             this.Dock = DockStyle.Fill;

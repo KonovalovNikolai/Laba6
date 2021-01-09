@@ -54,12 +54,11 @@ namespace The_Evolution_Of_Trust
         {
             for(; dif!=0 ; dif--)
             {
-                bool flag = true;
                 int smallest = _persons_number;
                 int index_smallest = 0;
                 for (int i = 0; i < _population.Length; i++)
                 {
-                    if (flag && _population[i] == 0)
+                    if (_population[i] == 0)
                     {
                         continue;
                     }
@@ -80,12 +79,11 @@ namespace The_Evolution_Of_Trust
         {
             for (; dif != 0; dif++)
             {
-                bool flag = true;
                 int biggest = 0;
                 int index_biggest = 0;
                 for (int i = 0; i < _population.Length; i++)
                 {
-                    if (flag && _population[i] == 0)
+                    if (_population[i] == 0)
                     {
                         continue;
                     }
