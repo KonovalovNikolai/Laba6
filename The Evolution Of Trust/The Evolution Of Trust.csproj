@@ -50,7 +50,11 @@
     <Compile Include="Data\ExchangeMachine.cs" />
     <Compile Include="Data\Game.cs" />
     <Compile Include="Data\ListStorage.cs" />
+    <Compile Include="Data\Players\Cheater.cs" />
+    <Compile Include="Data\Players\Copycat.cs" />
+    <Compile Include="Data\Players\Grudger.cs" />
     <Compile Include="Data\Players\PlayerTypeInfo.cs" />
+    <Compile Include="Data\Players\Trustful.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -5,35 +5,37 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-namespace The_Evolution_Of_Trust
+namespace The_Evolution_Of_Trust.Data.Players
 {
     /// <summary>
-    /// Доверчивый игрок.
-    /// При принятии решения всегда доверяет.
+    /// "Случайный" игрок.
+    /// Обманывает и доверяет с шансом 50/50.
     /// </summary>
-    class Trustful : Player
+    class Randomized : Player
     {
-        static Trustful()
+        static Randomized()
         {
             _info = new PlayerTypeInfo(
-                 0,
-                "Trustful",
-                "\"Давай будем лучшими друзьями!\"\nВсегда доверяется.",
-                Color.Pink
+                 7,
+                "Randomized",
+                "Просто жульничает или сотрудничает случайным образом\nс вероятностью 50/50",
+                Color.Red
             );
         }
 
         public override bool MakeADecision()
         {
-            return true;
+            return RRandom.CheckChance(_chance);
         }
 
         public override void ResetPlayerMemory() { }
 
         public override Player Create()
         {
-            return new Trustful();
+            return new Randomized();
         }
+
+        private static double _chance = 0.5;
 
         private static PlayerTypeInfo _info;
         public static PlayerTypeInfo Info { get { return _info; } }

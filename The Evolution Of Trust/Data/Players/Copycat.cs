@@ -8,31 +8,34 @@ using System.Drawing;
 namespace The_Evolution_Of_Trust
 {
     /// <summary>
-    /// Доверчивый игрок.
-    /// При принятии решения всегда доверяет.
+    /// Игрок имитатор.
+    /// На первом ходу доверяет, затем повторяет предыдущий ход противника.
     /// </summary>
-    class Trustful : Player
+    class Copycat : Player
     {
-        static Trustful()
+        static Copycat()
         {
             _info = new PlayerTypeInfo(
-                 0,
-                "Trustful",
-                "\"Давай будем лучшими друзьями!\"\nВсегда доверяется.",
-                Color.Pink
+                 2,
+                "Copycat",
+                "\"Привет! На первом ходу я доверюсь,\nа потом просто буду копировать твой последний ход.\"",
+                Color.Blue
             );
         }
 
         public override bool MakeADecision()
         {
-            return true;
+            return Memory;
         }
 
-        public override void ResetPlayerMemory() { }
+        public override void ResetPlayerMemory()
+        {
+            Memory = true;
+        }
 
         public override Player Create()
         {
-            return new Trustful();
+            return new Copycat();
         }
 
         private static PlayerTypeInfo _info;

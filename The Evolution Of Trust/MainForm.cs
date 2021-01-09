@@ -48,12 +48,6 @@ namespace The_Evolution_Of_Trust
             double current_angle = 0;
             foreach(var person in _game.GetPersonsSortedByName())
             {
-                if (person.DeleteMark)
-                {
-                    current_angle += angle;
-                    continue;
-                }
-
                 double radians = current_angle * Math.PI / 180;
 
                 float x = _centerX + _radius * (float)Math.Cos(radians);

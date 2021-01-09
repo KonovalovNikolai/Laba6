@@ -8,31 +8,31 @@ using System.Drawing;
 namespace The_Evolution_Of_Trust
 {
     /// <summary>
-    /// Доверчивый игрок.
-    /// При принятии решения всегда доверяет.
+    /// Игрок обманщик.
+    /// При принятии решения всегда обманывает.
     /// </summary>
-    class Trustful : Player
+    class Cheater : Player
     {
-        static Trustful()
+        static Cheater()
         {
             _info = new PlayerTypeInfo(
-                 0,
-                "Trustful",
-                "\"Давай будем лучшими друзьями!\"\nВсегда доверяется.",
-                Color.Pink
+                 1,
+                "Cheater",
+                "\"Cильные должны есть слабых!\"\nВсегда обманывает.",
+                Color.Black
             );
         }
 
         public override bool MakeADecision()
         {
-            return true;
+            return false;
         }
 
         public override void ResetPlayerMemory() { }
 
         public override Player Create()
         {
-            return new Trustful();
+            return new Cheater();
         }
 
         private static PlayerTypeInfo _info;
