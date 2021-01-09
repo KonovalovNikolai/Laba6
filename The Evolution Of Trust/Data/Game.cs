@@ -160,7 +160,7 @@ namespace The_Evolution_Of_Trust
         /// <summary>
         /// Массив количества типов игроков.
         /// </summary>
-        private int[] _population = { 4, 4, 4, 4, 4, 4, 3, 3 };
+        private int[] _population = { 4, 5, 5, 4, 4, 3, 0, 0 };
         public int[] Population { get { return _population; } }
 
         /// <summary>

@@ -14,7 +14,7 @@ namespace The_Evolution_Of_Trust
         /// <param name="pers">Добавляемый игрок.</param>
         public void Add(Player pers)
         {
-            _persons_list.Add(pers);
+            _players_list.Add(pers);
         }
 
         /// <summary>
@@ -22,7 +22,7 @@ namespace The_Evolution_Of_Trust
         /// </summary>
         public void SortByScore()
         {
-            _persons_list.Sort((x, y) => x.Score.CompareTo(y.Score));
+            _players_list.Sort((x, y) => x.Score.CompareTo(y.Score));
         }
 
         /// <summary>
@@ -30,7 +30,7 @@ namespace The_Evolution_Of_Trust
         /// </summary>
         public void ResetScore()
         {
-            foreach (var item in _persons_list)
+            foreach (var item in _players_list)
             {
                 item.Score = 0;
             }
@@ -41,7 +41,7 @@ namespace The_Evolution_Of_Trust
         /// </summary>
         public void Clear()
         {
-            _persons_list.Clear();
+            _players_list.Clear();
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace The_Evolution_Of_Trust
         /// <returns>Количество игроков.</returns>
         public int GetPlayersNumber()
         {
-            return _persons_list.Count();
+            return _players_list.Count();
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace The_Evolution_Of_Trust
         /// <returns>Список игроков.</returns>
         public List<Player> GetAllPersons()
         {
-            return new List<Player>(_persons_list);
+            return new List<Player>(_players_list);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace The_Evolution_Of_Trust
         /// <returns>Список игроков.</returns>
         public List<Player> GetPersonsSortedByName()
         {
-            return _persons_list.OrderBy(u => u.TypeName).ToList();
+            return _players_list.OrderBy(u => u.TypeName).ToList();
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace The_Evolution_Of_Trust
         /// <returns>Список игроков.</returns>
         public List<Player> GetPersonsSortedByScore()
         {
-            return _persons_list.OrderBy(u => u.Score).ToList();
+            return _players_list.OrderBy(u => u.Score).ToList();
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace The_Evolution_Of_Trust
         /// <returns>Игрок.</returns>
         public Player this[int index]
         {
-            get { return _persons_list[index]; }
+            get { return _players_list[index]; }
         }
 
         /// <summary>
@@ -97,21 +97,22 @@ namespace The_Evolution_Of_Trust
         /// <param name="number">Количество удаляемых игроков.</param>
         public void DeleteNumberOfWorst(int number)
         {
-            if(_persons_list.Count - number < 0)
+            if(_players_list.Count < number)
             {
-
+                Clear();
+                return;
             }
-            int lowest_score = _persons_list[0].Score;
+            int lowest_score = _players_list[0].Score;
             int i = 0;
-            for (; number > 0 && i < _persons_list.Count; i++)
+            for (; number > 0 && i < _players_list.Count; i++)
             {
-                if (lowest_score == _persons_list[i].Score)
+                if (lowest_score == _players_list[i].Score)
                 {
                     continue;
                 }
                 DeleteRange(i, ref number);
-                lowest_score = _persons_list[i].Score;
                 i = 0;
+                lowest_score = _players_list[i].Score;
             }
             if (number > 0)
             {
@@ -131,7 +132,7 @@ namespace The_Evolution_Of_Trust
         {
             if (end <= number)
             {
-                _persons_list.RemoveRange(0, end);
+                _players_list.RemoveRange(0, end);
                 number -= end;
                 end = 0;
                 return;
@@ -139,7 +140,7 @@ namespace The_Evolution_Of_Trust
             while (number != 0)
             {
                 int index = RRandom.random.Next(end);
-                _persons_list.RemoveAt(index);
+                _players_list.RemoveAt(index);
                 number--;
                 end--;
             }
@@ -153,17 +154,21 @@ namespace The_Evolution_Of_Trust
         /// <param name="number">Количество удаляемых игроков.</param>
         public void AddNewFromTop(int number)
         {
-            int best_score = _persons_list[_persons_list.Count - 1].Score;
-            int i = _persons_list.Count - 2;
+            if (_players_list.Count < number)
+            {
+                number = _players_list.Count;
+            }
+            int best_score = _players_list[_players_list.Count - 1].Score;
+            int i = _players_list.Count - 2;
             int start = i + 1;
             for (; number > 0 && i >= 0; i--)
             {
-                if (best_score == _persons_list[i].Score)
+                if (best_score == _players_list[i].Score)
                 {
                     continue;
                 }
                 AddRange(ref start, ref i, ref number);
-                best_score = _persons_list[i].Score;
+                best_score = _players_list[i].Score;
                 start = i;
             }
             AddRange(ref start, ref i, ref number);
@@ -183,7 +188,7 @@ namespace The_Evolution_Of_Trust
             {
                 for (int j = end + 1; j <= start; j++)
                 {
-                    Add(_persons_list[j].Create());
+                    Add(_players_list[j].Create());
                 }
                 number -= start - end;
                 return;
@@ -191,9 +196,9 @@ namespace The_Evolution_Of_Trust
             while (number != 0)
             {
                 int index = RRandom.random.Next(end + 1, start + 1);
-                Add(_persons_list[index]);
-                Add(_persons_list[index].Create());
-                _persons_list.RemoveAt(index);
+                Add(_players_list[index]);
+                Add(_players_list[index].Create());
+                _players_list.RemoveAt(index);
                 start--;
                 number--;
             }
@@ -202,6 +207,6 @@ namespace The_Evolution_Of_Trust
         /// <summary>
         /// Хранилище игроков.
         /// </summary>
-        private List<Player> _persons_list = new List<Player>();
+        private List<Player> _players_list = new List<Player>();
     }
 }

@@ -26,9 +26,6 @@ namespace The_Evolution_Of_Trust
 
         public override bool MakeADecision()
         {
-            if (_was_deceived_twice)
-                return Memory;
-
             if (!Memory) _count++;
             else _count = 0;
 
@@ -36,6 +33,9 @@ namespace The_Evolution_Of_Trust
             {
                 _was_deceived_twice = true;
             }
+
+            if (_was_deceived_twice)
+                return Memory;
 
             return true;
         }

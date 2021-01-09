@@ -44,6 +44,11 @@ namespace The_Evolution_Of_Trust
             StringFormat format = new StringFormat();
             Font font = new Font("Arial", 11);
 
+            if(_game.PopulationNumber == 0)
+            {
+                return;
+            }
+
             double angle = 360 / _game.PopulationNumber;
             double current_angle = 0;
             foreach(var person in _game.GetPersonsSortedByName())
