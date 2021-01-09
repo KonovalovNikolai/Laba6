@@ -158,7 +158,7 @@ namespace The_Evolution_Of_Trust
         private void SetCoords()
         {
             _centerX = DrawDeskPanel.Width / 2;
-            _centerY = DrawDeskPanel.Height / 2 - MenuTableLayoutPanel.Height / 2;
+            _centerY = DrawDeskPanel.Height / 2 /*- MenuTableLayoutPanel.Height / 2*/;
             _radius = DrawDeskPanel.Width / 2 - 80;
             _radius_outside = _radius + _small_radius;
         }

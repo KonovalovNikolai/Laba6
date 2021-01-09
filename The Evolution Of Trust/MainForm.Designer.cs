@@ -59,10 +59,11 @@ namespace The_Evolution_Of_Trust
             this.RoundsNumberLabel = new System.Windows.Forms.Label();
             this.MainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.DrawDeskPanel = new System.Windows.Forms.Panel();
-            this.MenuTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.StartButton = new System.Windows.Forms.Button();
-            this.StepButton = new System.Windows.Forms.Button();
             this.ResetButton = new System.Windows.Forms.Button();
+            this.StepButton = new System.Windows.Forms.Button();
+            this.StartButton = new System.Windows.Forms.Button();
+            this.MenuTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.SettingsTabControl.SuspendLayout();
             this.PopulationTabePage.SuspendLayout();
             this.PayoffsTabPage.SuspendLayout();
@@ -84,8 +85,8 @@ namespace The_Evolution_Of_Trust
             this.RoundsNumberTableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RoundsNumberTrackBar)).BeginInit();
             this.MainTableLayoutPanel.SuspendLayout();
-            this.DrawDeskPanel.SuspendLayout();
             this.MenuTableLayoutPanel.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // SettingsTabControl
@@ -502,8 +503,8 @@ namespace The_Evolution_Of_Trust
             this.MainTableLayoutPanel.ColumnCount = 2;
             this.MainTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.MainTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.MainTableLayoutPanel.Controls.Add(this.DrawDeskPanel, 0, 0);
             this.MainTableLayoutPanel.Controls.Add(this.SettingsTabControl, 1, 0);
+            this.MainTableLayoutPanel.Controls.Add(this.tableLayoutPanel5, 0, 0);
             this.MainTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.MainTableLayoutPanel.Name = "MainTableLayoutPanel";
@@ -516,44 +517,24 @@ namespace The_Evolution_Of_Trust
             // 
             this.DrawDeskPanel.AutoSize = true;
             this.DrawDeskPanel.BackColor = System.Drawing.SystemColors.Control;
-            this.DrawDeskPanel.Controls.Add(this.MenuTableLayoutPanel);
             this.DrawDeskPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DrawDeskPanel.Location = new System.Drawing.Point(3, 3);
             this.DrawDeskPanel.Name = "DrawDeskPanel";
-            this.DrawDeskPanel.Size = new System.Drawing.Size(480, 467);
+            this.DrawDeskPanel.Size = new System.Drawing.Size(474, 432);
             this.DrawDeskPanel.TabIndex = 0;
             this.DrawDeskPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.DrawDeskPanel_Paint);
             // 
-            // MenuTableLayoutPanel
+            // ResetButton
             // 
-            this.MenuTableLayoutPanel.AutoSize = true;
-            this.MenuTableLayoutPanel.ColumnCount = 3;
-            this.MenuTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.MenuTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.MenuTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.MenuTableLayoutPanel.Controls.Add(this.StartButton, 0, 0);
-            this.MenuTableLayoutPanel.Controls.Add(this.StepButton, 1, 0);
-            this.MenuTableLayoutPanel.Controls.Add(this.ResetButton, 2, 0);
-            this.MenuTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.MenuTableLayoutPanel.Location = new System.Drawing.Point(0, 444);
-            this.MenuTableLayoutPanel.Name = "MenuTableLayoutPanel";
-            this.MenuTableLayoutPanel.RowCount = 1;
-            this.MenuTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.MenuTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.MenuTableLayoutPanel.Size = new System.Drawing.Size(480, 23);
-            this.MenuTableLayoutPanel.TabIndex = 0;
-            // 
-            // StartButton
-            // 
-            this.StartButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.StartButton.Location = new System.Drawing.Point(0, 0);
-            this.StartButton.Margin = new System.Windows.Forms.Padding(0);
-            this.StartButton.Name = "StartButton";
-            this.StartButton.Size = new System.Drawing.Size(160, 23);
-            this.StartButton.TabIndex = 0;
-            this.StartButton.Text = "Старт";
-            this.StartButton.UseVisualStyleBackColor = true;
-            this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
+            this.ResetButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ResetButton.Location = new System.Drawing.Point(320, 0);
+            this.ResetButton.Margin = new System.Windows.Forms.Padding(0);
+            this.ResetButton.Name = "ResetButton";
+            this.ResetButton.Size = new System.Drawing.Size(160, 23);
+            this.ResetButton.TabIndex = 2;
+            this.ResetButton.Text = "Сброс";
+            this.ResetButton.UseVisualStyleBackColor = true;
+            this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
             // StepButton
             // 
@@ -567,17 +548,50 @@ namespace The_Evolution_Of_Trust
             this.StepButton.UseVisualStyleBackColor = true;
             this.StepButton.Click += new System.EventHandler(this.StepButton_Click);
             // 
-            // ResetButton
+            // StartButton
             // 
-            this.ResetButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ResetButton.Location = new System.Drawing.Point(320, 0);
-            this.ResetButton.Margin = new System.Windows.Forms.Padding(0);
-            this.ResetButton.Name = "ResetButton";
-            this.ResetButton.Size = new System.Drawing.Size(160, 23);
-            this.ResetButton.TabIndex = 2;
-            this.ResetButton.Text = "Сброс";
-            this.ResetButton.UseVisualStyleBackColor = true;
-            this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
+            this.StartButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.StartButton.Location = new System.Drawing.Point(0, 0);
+            this.StartButton.Margin = new System.Windows.Forms.Padding(0);
+            this.StartButton.Name = "StartButton";
+            this.StartButton.Size = new System.Drawing.Size(160, 23);
+            this.StartButton.TabIndex = 0;
+            this.StartButton.Text = "Старт";
+            this.StartButton.UseVisualStyleBackColor = true;
+            this.StartButton.Click += new System.EventHandler(this.StartButton_Click);
+            // 
+            // MenuTableLayoutPanel
+            // 
+            this.MenuTableLayoutPanel.AutoSize = true;
+            this.MenuTableLayoutPanel.ColumnCount = 3;
+            this.MenuTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.MenuTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.MenuTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.MenuTableLayoutPanel.Controls.Add(this.StartButton, 0, 0);
+            this.MenuTableLayoutPanel.Controls.Add(this.StepButton, 1, 0);
+            this.MenuTableLayoutPanel.Controls.Add(this.ResetButton, 2, 0);
+            this.MenuTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.MenuTableLayoutPanel.Location = new System.Drawing.Point(3, 441);
+            this.MenuTableLayoutPanel.Name = "MenuTableLayoutPanel";
+            this.MenuTableLayoutPanel.RowCount = 1;
+            this.MenuTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.MenuTableLayoutPanel.Size = new System.Drawing.Size(474, 23);
+            this.MenuTableLayoutPanel.TabIndex = 0;
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 1;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Controls.Add(this.DrawDeskPanel, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.MenuTableLayoutPanel, 0, 1);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 2;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(480, 467);
+            this.tableLayoutPanel5.TabIndex = 2;
             // 
             // MainForm
             // 
@@ -615,10 +629,9 @@ namespace The_Evolution_Of_Trust
             this.RoundsNumberTableLayoutPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RoundsNumberTrackBar)).EndInit();
             this.MainTableLayoutPanel.ResumeLayout(false);
-            this.MainTableLayoutPanel.PerformLayout();
-            this.DrawDeskPanel.ResumeLayout(false);
-            this.DrawDeskPanel.PerformLayout();
             this.MenuTableLayoutPanel.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -644,9 +657,6 @@ namespace The_Evolution_Of_Trust
         private System.Windows.Forms.TableLayoutPanel PlayoffsTableLayoutPanel;
         private System.Windows.Forms.Label PlayffsTitleLabel;
         private System.Windows.Forms.Panel DrawDeskPanel;
-        private System.Windows.Forms.Button StartButton;
-        private System.Windows.Forms.Button StepButton;
-        private System.Windows.Forms.Button ResetButton;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.NumericUpDown CheatCheatNumericUpDown;
@@ -658,7 +668,11 @@ namespace The_Evolution_Of_Trust
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.NumericUpDown TrustNumericUpDown;
         private System.Windows.Forms.NumericUpDown CheatNumericUpDown;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.TableLayoutPanel MenuTableLayoutPanel;
+        private System.Windows.Forms.Button StartButton;
+        private System.Windows.Forms.Button StepButton;
+        private System.Windows.Forms.Button ResetButton;
     }
 }
 
