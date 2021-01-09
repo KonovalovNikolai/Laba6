@@ -8,19 +8,26 @@ namespace The_Evolution_Of_Trust
 {
     class ListStorage
     {
-        // Добавление игрока в хранилище.
+        /// <summary>
+        /// Добавление игрока в хранилище.
+        /// </summary>
+        /// <param name="pers">Добавляемый игрок.</param>
         public void Add(Player pers)
         {
             _persons_list.Add(pers);
         }
 
-        // Отсортировать хранилище по счёту
+        /// <summary>
+        /// Отсортировать хранилище по счёту.
+        /// </summary>
         public void SortByScore()
         {
             _persons_list.Sort((x, y) => x.Score.CompareTo(y.Score));
         }
 
-        // Обнуление счёта игроков.
+        /// <summary>
+        /// Обнуление счёта игроков.
+        /// </summary>
         public void ResetScore()
         {
             foreach (var item in _persons_list)
@@ -29,41 +36,71 @@ namespace The_Evolution_Of_Trust
             }
         }
 
-        // Очищение хранилища.
+        /// <summary>
+        /// Очищение хранилища.
+        /// </summary>
         public void Clear()
         {
             _persons_list.Clear();
         }
 
-        // Получить список всех игроков.
+        /// <summary>
+        /// Получить количество игроков.
+        /// </summary>
+        /// <returns>Количество игроков.</returns>
+        public int GetPlayersNumber()
+        {
+            return _persons_list.Count();
+        }
+
+        /// <summary>
+        /// Получить список всех игроков.
+        /// </summary>
+        /// <returns>Список игроков.</returns>
         public List<Player> GetAllPersons()
         {
             return new List<Player>(_persons_list);
         }
 
-        // Получить список всех игроков отсортированный по именам.
+        /// <summary>
+        /// Получить список всех игроков отсортированный по именам.
+        /// </summary>
+        /// <returns>Список игроков.</returns>
         public List<Player> GetPersonsSortedByName()
         {
             return _persons_list.OrderBy(u => u.TypeName).ToList();
         }
 
-        // Получить список всех игроков отсортированный по счёту.
+        /// <summary>
+        /// Получить список всех игроков отсортированный по счёту.
+        /// </summary>
+        /// <returns>Список игроков.</returns>
         public List<Player> GetPersonsSortedByScore()
         {
             return _persons_list.OrderBy(u => u.Score).ToList();
         }
 
-        // Получение игркоа по индексу.
+        /// <summary>
+        /// Получение игркоа по индексу.
+        /// </summary>
+        /// <param name="index">Индекс.</param>
+        /// <returns>Игрок.</returns>
         public Player this[int index]
         {
             get { return _persons_list[index]; }
         }
 
-        // Удаление указанного количества игроков с наименьшим счётом.
-        // Если у игроков одинаковые счета, то удаляются случайные из них.
-        // - int number - количество удаляемых игроков
+        /// <summary>
+        /// Удаление указанного количества игроков с наименьшим счётом.
+        /// Если у игроков одинаковые счета, то удаляются случайные из них.
+        /// </summary>
+        /// <param name="number">Количество удаляемых игроков.</param>
         public void DeleteNumberOfWorst(int number)
         {
+            if(_persons_list.Count - number < 0)
+            {
+
+            }
             int lowest_score = _persons_list[0].Score;
             int i = 0;
             for (; number > 0 && i < _persons_list.Count; i++)
@@ -82,13 +119,14 @@ namespace The_Evolution_Of_Trust
             }
         }
 
-        // Удаление игроков из указанного промежутка.
-        // Если промежуток больше числа удаляемых игроков,
-        // то выбираются случайные игроки из этого промежутка. 
-        // Начало промежутка всегда 0.
-        // Игроки удаляются из промежутка [0, end).
-        // - int end - конец промежутка.
-        // - ref int number - количество удаляемых игроков.
+        /// <summary>
+        /// Удаление игроков из указанного промежутка.
+        /// Если промежуток больше числа удаляемых игроков, то выбираются случайные игроки из этого промежутка.
+        /// Начало промежутка всегда 0.
+        /// Игроки удаляются из промежутка [0, end).
+        /// </summary>
+        /// <param name="end">Конец промежутка.</param>
+        /// <param name="number">Количество удаляемых игроков.</param>
         private void DeleteRange(int end, ref int number)
         {
             if (end <= number)
@@ -107,10 +145,12 @@ namespace The_Evolution_Of_Trust
             }
         }
 
-        // Добавление указанного количества игроков.
-        // Новые игроки создаются из игроков с лучшим счётом.
-        // Если у игроков одинаковые счета, то создаются по случайным из них.
-        // - int number - количество удаляемых игроков
+        /// <summary>
+        /// Добавление указанного количества игроков.
+        /// Новые игроки создаются из игроков с лучшим счётом.
+        /// Если у игроков одинаковые счета, то создаются по случайным из них.
+        /// </summary>
+        /// <param name="number">Количество удаляемых игроков.</param>
         public void AddNewFromTop(int number)
         {
             int best_score = _persons_list[_persons_list.Count - 1].Score;
@@ -129,13 +169,14 @@ namespace The_Evolution_Of_Trust
             AddRange(ref start, ref i, ref number);
         }
 
-        // Добавление игроков из указанного промежутка.
-        // Если промежуток больше числа добавляемых игроков,
-        // то выбираются случайные игроки из этого промежутка. 
-        // Игроки добавляются из промежутка [start, end].
-        // - ref int start - начало промежутка
-        // - ref int end - конец промежутка.
-        // - ref int number - количество удаляемых игроков.
+        /// <summary>
+        /// Добавление игроков из указанного промежутка.
+        /// Если промежуток больше числа добавляемых игроков, то выбираются случайные игроки из этого промежутка.
+        /// Игроки добавляются из промежутка [start, end].
+        /// </summary>
+        /// <param name="start">Начало промежутка.</param>
+        /// <param name="end">Конец промежутка.</param>
+        /// <param name="number">Количество удаляемых игроков.</param>
         private void AddRange(ref int start, ref int end, ref int number)
         {
             if (start - end <= number)
@@ -158,7 +199,9 @@ namespace The_Evolution_Of_Trust
             }
         }
 
-        //Хранилище игроков
+        /// <summary>
+        /// Хранилище игроков.
+        /// </summary>
         private List<Player> _persons_list = new List<Player>();
     }
 }

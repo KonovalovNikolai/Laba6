@@ -13,22 +13,28 @@ namespace The_Evolution_Of_Trust
             Reset();
         }
 
+        /// <summary>
+        /// Вернуть количество игроков начальное состояние.
+        /// </summary>
         public void Reset()
         {
             _storage.Clear();
             _count = 0;
-            _persons_number = 0;
             for (int i = 0; i < _population.Length; i++)
             {
-                _persons_number += _population[i];
                 for (int j = 0; j < _population[i]; j++)
                 {
                     _storage.Add(PlayersCreator.Create(i));
                 }
             }
-
+            _persons_number = _storage.GetPlayersNumber();
         }
 
+        /// <summary>
+        /// Именить 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="id"></param>
         public void ControlPopulation(int value, int id)
         {
             if(value == _population[id])
@@ -97,41 +103,24 @@ namespace The_Evolution_Of_Trust
             }
         }
 
-        //public void Step()
-        //{
-        //    if (_count == _persons_number)
-        //    {
-        //        _storage.Selection(_selected_number);
-        //        _storage.ResetScore();
-        //        _count = 0;
-        //        return;
-        //    }
-        //    for (; _count < _persons_number; _count++)
-        //    {
-        //        for (int i = _count + 1; i < _persons_number; i++)
-        //        {
-        //            PlayRounds(_storage[_count], _storage[i]);
-        //        }
-        //    }
-        //}
         public void Step()
         {
-            Console.WriteLine(_persons_number);
             if (_count == _persons_number)
             {
                 _storage.SortByScore();
                 _storage.DeleteNumberOfWorst(_selected_number);
                 _count = -1;
+                _persons_number = _storage.GetPlayersNumber();
                 return;
             }
             if (_count == -1)
             {
                 _storage.AddNewFromTop(_selected_number);
                 _storage.ResetScore();
+                _persons_number = _storage.GetPlayersNumber();
                 _count = 0;
                 return;
             }
-            Console.WriteLine($"{_count}");
             for (; _count < _persons_number; _count++)
             {
                 for (int i = _count + 1; i < _persons_number; i++)
@@ -139,10 +128,6 @@ namespace The_Evolution_Of_Trust
                     PlayRounds(_storage[_count], _storage[i]);
                 }
             }
-        }
-        public List<Player> GetPersonsSortedByName()
-        {
-            return _storage.GetPersonsSortedByName();
         }
 
         private void PlayRounds(Player pers1, Player pers2)
@@ -155,20 +140,42 @@ namespace The_Evolution_Of_Trust
             pers2.ResetPlayerMemory();
         }
 
+        /// <summary>
+        /// Получить список всех игроков отсортированный по именам.
+        /// </summary>
+        /// <returns>Список игроков.</returns>
+        public List<Player> GetPersonsSortedByName()
+        {
+            return _storage.GetPersonsSortedByName();
+        }
+
+        /// <summary>
+        /// Хранилище игроков.
+        /// </summary>
         private ListStorage _storage = new ListStorage();
 
         private ExchangeMachine _exchange_machine = new ExchangeMachine();
         public ExchangeMachine ExchangeMachine { get { return _exchange_machine; } }
 
+        /// <summary>
+        /// Массив количества типов игроков.
+        /// </summary>
         private int[] _population = { 4, 4, 4, 4, 4, 4, 3, 3 };
         public int[] Population { get { return _population; } }
 
+        /// <summary>
+        /// Количество раундов.
+        /// </summary>
         private int _rounds_number = 10;
         public int RoundsNumber
         {
             get { return _rounds_number; }
             set { _rounds_number = value; }
         }
+
+        /// <summary>
+        /// Количество отбираемых игроков.
+        /// </summary>
         private int _selected_number = 5;
         public int SelectionsNumber
         {
@@ -176,9 +183,15 @@ namespace The_Evolution_Of_Trust
             set { _selected_number = value; }
         }
 
+        /// <summary>
+        /// Количество игроков.
+        /// </summary>
         private int _persons_number;
         public int PopulationNumber { get { return _persons_number; } }
 
+        /// <summary>
+        /// Состояние игры.
+        /// </summary>
         private int _count = 0;
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-namespace The_Evolution_Of_Trust.Data.Players
+namespace The_Evolution_Of_Trust
 {
     /// <summary>
     /// "Случайный" игрок.
