@@ -34,7 +34,7 @@ namespace The_Evolution_Of_Trust
             _g = DrawDeskPanel.CreateGraphics();
 
             DrawPopulationSliders();
-            DrawSettingsLabels();
+            DrawRuleSliders();
             DrawPayoffs();
             SetCoords();
         }
@@ -123,31 +123,24 @@ namespace The_Evolution_Of_Trust
             }
         }
 
-        private void DrawSettingsLabels()
+        private void DrawRuleSliders()
         {
-            RoundsNumberTrackBar.Value = _game.RoundsNumber;
-            RoundsNumberLabel.Text = $"Играть {RoundsNumberTrackBar.Value} раундов за матч";
+            RuleSlider[] sliders =
+            {
+                new RuleSlider(1, 50, "Играть {} раундов за матч", _game.RoundsNumber, _game.SetRoundsNumber),
+                new RuleSlider(1, 15, "После каждого турнира удалять {} худших игроков и копировать n лучших", _game.SelectionsNumber, _game.SetSelectionsNumber),
+                new RuleSlider(0, 50, "В каждом раунде игрок делает ошибку с вероятностью {}%", (int)(_game.ExchangeMachine.MistakeChance*100), _game.SetMistakeChange),
+            };
 
-            SelectionSettingTrackBar.Value = _game.SelectionsNumber;
-            SelectionLable.Text = $"После каждого турнира удалять n худших игроков и копировать {SelectionSettingTrackBar.Value} лучших";
-
-            MistakeSettingTrackBar.Value = (int)(_game.ExchangeMachine.MistakeChance * 100);
-            MistakeLabel.Text = $"В каждом раунде игрок делает ошибку с вероятностью {MistakeSettingTrackBar.Value}%";
+            for(int i = 0; i < RulesTableLayoutPanel.RowCount; i++)
+            {
+                sliders[i].Scroll += RulesSlider_Scroll;
+                RulesTableLayoutPanel.Controls.Add(sliders[i].Table, 0, i);
+            }
         }
-        private void RoundsNumberTrackBar_Scroll(object sender, EventArgs e)
+        private void RulesSlider_Scroll(object sender, System.EventArgs e)
         {
-            RoundsNumberLabel.Text = $"Играть {RoundsNumberTrackBar.Value} раундов за матч";
-            _game.RoundsNumber = RoundsNumberTrackBar.Value;
-        }
-        private void SelectionSettingTrackBar_Scroll(object sender, EventArgs e)
-        {
-            SelectionLable.Text = $"После каждого турнира удалять n худших игроков и копировать {SelectionSettingTrackBar.Value} лучших";
-            _game.SelectionsNumber = SelectionSettingTrackBar.Value;
-        }
-        private void MistakeSettingTrackBar_Scroll(object sender, EventArgs e)
-        {
-            MistakeLabel.Text = $"В каждом раунде игрок делает ошибку с вероятностью {MistakeSettingTrackBar.Value}%";
-            _game.ExchangeMachine.MistakeChance = (double)MistakeSettingTrackBar.Value / 100;
+            (sender as RuleSlider).UpdateValue();
         }
 
         private void FillCicle(Brush brush, float centerX, float centerY, float radius)
@@ -158,7 +151,7 @@ namespace The_Evolution_Of_Trust
         private void SetCoords()
         {
             _centerX = DrawDeskPanel.Width / 2;
-            _centerY = DrawDeskPanel.Height / 2 /*- MenuTableLayoutPanel.Height / 2*/;
+            _centerY = DrawDeskPanel.Height / 2;
             _radius = DrawDeskPanel.Width / 2 - 80;
             _radius_outside = _radius + _small_radius;
         }
@@ -278,6 +271,21 @@ namespace The_Evolution_Of_Trust
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             ShutDownThread();
+        }
+
+        private void MistakeSettingTrackBar_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SelectionSettingTrackBar_Scroll(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RoundsNumberTrackBar_Scroll(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -148,6 +148,15 @@ namespace The_Evolution_Of_Trust
         }
 
         /// <summary>
+        /// Установить шанс ошибки игрока.
+        /// </summary>
+        /// <param name="value">Процент вероятности.</param>
+        public void SetMistakeChange(int value)
+        {
+            _exchange_machine.MistakeChance = (double)value / 100.0;
+        }
+
+        /// <summary>
         /// Хранилище игроков.
         /// </summary>
         private ListStorage _storage = new ListStorage();
@@ -165,6 +174,14 @@ namespace The_Evolution_Of_Trust
         /// Количество раундов.
         /// </summary>
         private int _rounds_number = 10;
+        /// <summary>
+        /// Установить количество раундов.
+        /// </summary>
+        /// <param name="value">Количество раундов.</param>
+        public void SetRoundsNumber(int value)
+        {
+            _rounds_number = value;
+        }
         public int RoundsNumber
         {
             get { return _rounds_number; }
@@ -175,6 +192,14 @@ namespace The_Evolution_Of_Trust
         /// Количество отбираемых игроков.
         /// </summary>
         private int _selected_number = 5;
+        /// <summary>
+        /// Уставновить количество отбираемых игроков.
+        /// </summary>
+        /// <param name="value">Количество отбираемых игроков.</param>
+        public void SetSelectionsNumber(int value)
+        {
+            _selected_number = value;
+        }
         public int SelectionsNumber
         {
             get { return _selected_number; }

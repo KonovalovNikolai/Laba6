@@ -15,8 +15,9 @@ namespace The_Evolution_Of_Trust
             _table.ColumnCount = 1;
             _table.RowCount = 2;
 
-            _table.RowStyles.Add(new RowStyle());
-            _table.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            _table.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            _table.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            _table.Dock = DockStyle.Fill;
 
             _text = text;
 
@@ -24,21 +25,24 @@ namespace The_Evolution_Of_Trust
 
             _lable.Text = _text.Replace("{}", value.ToString());
             _lable.Font = new Font("Microsoft Sans Serif", 11);
+            _lable.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             _lable.Dock = DockStyle.Fill;
             _table.Controls.Add(_lable, 0, 0);
 
             this.Minimum = min;
             this.Maximum = max;
             this.Value = value;
+            this.Margin = new Padding(10);
             this.LargeChange = 1;
             this.Dock = DockStyle.Fill;
             _table.Controls.Add(this, 0, 1);
         }
 
-        public void UpdateValue(int value)
+        public void UpdateValue()
         {
+            int value = this.Value;
             _lable.Text = _text.Replace("{}", value.ToString());
-            _mutator(value);
+            _mutator(this.Value);
         }
 
         private string _text;
@@ -52,6 +56,10 @@ namespace The_Evolution_Of_Trust
         }
 
         private Label _lable = new Label();
+        public Label Label
+        {
+            get { return _lable; }
+        }
 
         private TableLayoutPanel _table = new TableLayoutPanel();
         public TableLayoutPanel Table

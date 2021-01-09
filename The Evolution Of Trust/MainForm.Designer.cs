@@ -48,15 +48,6 @@ namespace The_Evolution_Of_Trust
             this.CheatNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.RulesTabPage = new System.Windows.Forms.TabPage();
             this.RulesTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.MistakeTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.MistakeSettingTrackBar = new System.Windows.Forms.TrackBar();
-            this.MistakeLabel = new System.Windows.Forms.Label();
-            this.SelectionSettingsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.SelectionSettingTrackBar = new System.Windows.Forms.TrackBar();
-            this.SelectionLable = new System.Windows.Forms.Label();
-            this.RoundsNumberTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.RoundsNumberTrackBar = new System.Windows.Forms.TrackBar();
-            this.RoundsNumberLabel = new System.Windows.Forms.Label();
             this.MainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.DrawDeskPanel = new System.Windows.Forms.Panel();
             this.ResetButton = new System.Windows.Forms.Button();
@@ -77,13 +68,6 @@ namespace The_Evolution_Of_Trust
             ((System.ComponentModel.ISupportInitialize)(this.TrustNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CheatNumericUpDown)).BeginInit();
             this.RulesTabPage.SuspendLayout();
-            this.RulesTableLayoutPanel.SuspendLayout();
-            this.MistakeTableLayoutPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MistakeSettingTrackBar)).BeginInit();
-            this.SelectionSettingsTableLayoutPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SelectionSettingTrackBar)).BeginInit();
-            this.RoundsNumberTableLayoutPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.RoundsNumberTrackBar)).BeginInit();
             this.MainTableLayoutPanel.SuspendLayout();
             this.MenuTableLayoutPanel.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -363,9 +347,6 @@ namespace The_Evolution_Of_Trust
             this.RulesTableLayoutPanel.ColumnCount = 1;
             this.RulesTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.RulesTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.RulesTableLayoutPanel.Controls.Add(this.MistakeTableLayoutPanel, 0, 2);
-            this.RulesTableLayoutPanel.Controls.Add(this.SelectionSettingsTableLayoutPanel, 0, 1);
-            this.RulesTableLayoutPanel.Controls.Add(this.RoundsNumberTableLayoutPanel, 0, 0);
             this.RulesTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.RulesTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.RulesTableLayoutPanel.Name = "RulesTableLayoutPanel";
@@ -375,128 +356,6 @@ namespace The_Evolution_Of_Trust
             this.RulesTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.RulesTableLayoutPanel.Size = new System.Drawing.Size(311, 441);
             this.RulesTableLayoutPanel.TabIndex = 0;
-            // 
-            // MistakeTableLayoutPanel
-            // 
-            this.MistakeTableLayoutPanel.ColumnCount = 1;
-            this.MistakeTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.MistakeTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.MistakeTableLayoutPanel.Controls.Add(this.MistakeSettingTrackBar, 0, 1);
-            this.MistakeTableLayoutPanel.Controls.Add(this.MistakeLabel, 0, 0);
-            this.MistakeTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MistakeTableLayoutPanel.Location = new System.Drawing.Point(3, 297);
-            this.MistakeTableLayoutPanel.Name = "MistakeTableLayoutPanel";
-            this.MistakeTableLayoutPanel.RowCount = 2;
-            this.MistakeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.MistakeTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.MistakeTableLayoutPanel.Size = new System.Drawing.Size(305, 141);
-            this.MistakeTableLayoutPanel.TabIndex = 2;
-            // 
-            // MistakeSettingTrackBar
-            // 
-            this.MistakeSettingTrackBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.MistakeSettingTrackBar.Location = new System.Drawing.Point(10, 80);
-            this.MistakeSettingTrackBar.Margin = new System.Windows.Forms.Padding(10);
-            this.MistakeSettingTrackBar.Maximum = 50;
-            this.MistakeSettingTrackBar.Name = "MistakeSettingTrackBar";
-            this.MistakeSettingTrackBar.Size = new System.Drawing.Size(285, 45);
-            this.MistakeSettingTrackBar.TabIndex = 0;
-            this.MistakeSettingTrackBar.Value = 5;
-            this.MistakeSettingTrackBar.Scroll += new System.EventHandler(this.MistakeSettingTrackBar_Scroll);
-            // 
-            // MistakeLabel
-            // 
-            this.MistakeLabel.AutoSize = true;
-            this.MistakeLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MistakeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MistakeLabel.Location = new System.Drawing.Point(3, 0);
-            this.MistakeLabel.Name = "MistakeLabel";
-            this.MistakeLabel.Size = new System.Drawing.Size(299, 70);
-            this.MistakeLabel.TabIndex = 1;
-            this.MistakeLabel.Text = "В каждом раунде игрок делает ошибку с вероятностью n%";
-            this.MistakeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // SelectionSettingsTableLayoutPanel
-            // 
-            this.SelectionSettingsTableLayoutPanel.ColumnCount = 1;
-            this.SelectionSettingsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.SelectionSettingsTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.SelectionSettingsTableLayoutPanel.Controls.Add(this.SelectionSettingTrackBar, 0, 1);
-            this.SelectionSettingsTableLayoutPanel.Controls.Add(this.SelectionLable, 0, 0);
-            this.SelectionSettingsTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SelectionSettingsTableLayoutPanel.Location = new System.Drawing.Point(3, 150);
-            this.SelectionSettingsTableLayoutPanel.Name = "SelectionSettingsTableLayoutPanel";
-            this.SelectionSettingsTableLayoutPanel.RowCount = 2;
-            this.SelectionSettingsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.SelectionSettingsTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.SelectionSettingsTableLayoutPanel.Size = new System.Drawing.Size(305, 141);
-            this.SelectionSettingsTableLayoutPanel.TabIndex = 1;
-            // 
-            // SelectionSettingTrackBar
-            // 
-            this.SelectionSettingTrackBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.SelectionSettingTrackBar.Location = new System.Drawing.Point(10, 80);
-            this.SelectionSettingTrackBar.Margin = new System.Windows.Forms.Padding(10);
-            this.SelectionSettingTrackBar.Maximum = 15;
-            this.SelectionSettingTrackBar.Minimum = 1;
-            this.SelectionSettingTrackBar.Name = "SelectionSettingTrackBar";
-            this.SelectionSettingTrackBar.Size = new System.Drawing.Size(285, 45);
-            this.SelectionSettingTrackBar.TabIndex = 0;
-            this.SelectionSettingTrackBar.Value = 5;
-            this.SelectionSettingTrackBar.Scroll += new System.EventHandler(this.SelectionSettingTrackBar_Scroll);
-            // 
-            // SelectionLable
-            // 
-            this.SelectionLable.AutoSize = true;
-            this.SelectionLable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SelectionLable.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SelectionLable.Location = new System.Drawing.Point(3, 0);
-            this.SelectionLable.Name = "SelectionLable";
-            this.SelectionLable.Size = new System.Drawing.Size(299, 70);
-            this.SelectionLable.TabIndex = 1;
-            this.SelectionLable.Text = "После каждого турнира удалять n худших игроков и копировать n лучших";
-            this.SelectionLable.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // RoundsNumberTableLayoutPanel
-            // 
-            this.RoundsNumberTableLayoutPanel.ColumnCount = 1;
-            this.RoundsNumberTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.RoundsNumberTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.RoundsNumberTableLayoutPanel.Controls.Add(this.RoundsNumberTrackBar, 0, 1);
-            this.RoundsNumberTableLayoutPanel.Controls.Add(this.RoundsNumberLabel, 0, 0);
-            this.RoundsNumberTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.RoundsNumberTableLayoutPanel.Location = new System.Drawing.Point(3, 3);
-            this.RoundsNumberTableLayoutPanel.Name = "RoundsNumberTableLayoutPanel";
-            this.RoundsNumberTableLayoutPanel.RowCount = 2;
-            this.RoundsNumberTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.RoundsNumberTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.RoundsNumberTableLayoutPanel.Size = new System.Drawing.Size(305, 141);
-            this.RoundsNumberTableLayoutPanel.TabIndex = 0;
-            // 
-            // RoundsNumberTrackBar
-            // 
-            this.RoundsNumberTrackBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.RoundsNumberTrackBar.Location = new System.Drawing.Point(10, 80);
-            this.RoundsNumberTrackBar.Margin = new System.Windows.Forms.Padding(10);
-            this.RoundsNumberTrackBar.Maximum = 50;
-            this.RoundsNumberTrackBar.Minimum = 1;
-            this.RoundsNumberTrackBar.Name = "RoundsNumberTrackBar";
-            this.RoundsNumberTrackBar.Size = new System.Drawing.Size(285, 45);
-            this.RoundsNumberTrackBar.TabIndex = 0;
-            this.RoundsNumberTrackBar.Value = 5;
-            this.RoundsNumberTrackBar.Scroll += new System.EventHandler(this.RoundsNumberTrackBar_Scroll);
-            // 
-            // RoundsNumberLabel
-            // 
-            this.RoundsNumberLabel.AutoSize = true;
-            this.RoundsNumberLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.RoundsNumberLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RoundsNumberLabel.Location = new System.Drawing.Point(3, 0);
-            this.RoundsNumberLabel.Name = "RoundsNumberLabel";
-            this.RoundsNumberLabel.Size = new System.Drawing.Size(299, 70);
-            this.RoundsNumberLabel.TabIndex = 1;
-            this.RoundsNumberLabel.Text = "Играть n раундов за матч";
-            this.RoundsNumberLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // MainTableLayoutPanel
             // 
@@ -618,16 +477,6 @@ namespace The_Evolution_Of_Trust
             ((System.ComponentModel.ISupportInitialize)(this.TrustNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CheatNumericUpDown)).EndInit();
             this.RulesTabPage.ResumeLayout(false);
-            this.RulesTableLayoutPanel.ResumeLayout(false);
-            this.MistakeTableLayoutPanel.ResumeLayout(false);
-            this.MistakeTableLayoutPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.MistakeSettingTrackBar)).EndInit();
-            this.SelectionSettingsTableLayoutPanel.ResumeLayout(false);
-            this.SelectionSettingsTableLayoutPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SelectionSettingTrackBar)).EndInit();
-            this.RoundsNumberTableLayoutPanel.ResumeLayout(false);
-            this.RoundsNumberTableLayoutPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.RoundsNumberTrackBar)).EndInit();
             this.MainTableLayoutPanel.ResumeLayout(false);
             this.MenuTableLayoutPanel.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
@@ -645,15 +494,6 @@ namespace The_Evolution_Of_Trust
         private System.Windows.Forms.TableLayoutPanel PopulatioTableLayoutPanel;
         private System.Windows.Forms.TabPage RulesTabPage;
         private System.Windows.Forms.TableLayoutPanel RulesTableLayoutPanel;
-        private System.Windows.Forms.TableLayoutPanel MistakeTableLayoutPanel;
-        private System.Windows.Forms.TrackBar MistakeSettingTrackBar;
-        private System.Windows.Forms.Label MistakeLabel;
-        private System.Windows.Forms.TableLayoutPanel SelectionSettingsTableLayoutPanel;
-        private System.Windows.Forms.TrackBar SelectionSettingTrackBar;
-        private System.Windows.Forms.Label SelectionLable;
-        private System.Windows.Forms.TableLayoutPanel RoundsNumberTableLayoutPanel;
-        private System.Windows.Forms.TrackBar RoundsNumberTrackBar;
-        private System.Windows.Forms.Label RoundsNumberLabel;
         private System.Windows.Forms.TableLayoutPanel PlayoffsTableLayoutPanel;
         private System.Windows.Forms.Label PlayffsTitleLabel;
         private System.Windows.Forms.Panel DrawDeskPanel;
