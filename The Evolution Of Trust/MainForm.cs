@@ -48,29 +48,37 @@ namespace The_Evolution_Of_Trust
             {
                 return;
             }
+            if(_game.PopulationNumber == 1)
+            {
+                Player player = _game.GetPersonsSortedByName()[0];
+                _brush.Color = player.TypeColor;
+                FillCicle(_brush, _centerX, _centerY, _small_radius);
+                _brush.Color = Color.Black;
+                _g.DrawString(player.Score.ToString(), font, _brush, _centerX + _small_radius, _centerY, format);
+                return;
+            }
 
             double angle = 360 / _game.PopulationNumber;
             double current_angle = 0;
-            foreach(var person in _game.GetPersonsSortedByName())
+            foreach(var player in _game.GetPersonsSortedByName())
             {
                 double radians = current_angle * Math.PI / 180;
 
                 float x = _centerX + _radius * (float)Math.Cos(radians);
                 float y = _centerY + _radius * (float)Math.Sin(radians);
 
-                _brush.Color = person.TypeColor;
+                _brush.Color = player.TypeColor;
                 FillCicle(_brush, x, y, _small_radius);
 
                 x = _centerX + _radius_outside * (float)Math.Cos(radians);
                 y = _centerY + _radius_outside * (float)Math.Sin(radians);
 
                 _brush.Color = Color.Black;
-                _g.DrawString(person.Score.ToString(), font, _brush, x, y, format);
+                _g.DrawString(player.Score.ToString(), font, _brush, x, y, format);
 
                 current_angle += angle;
             }
         }
-
         private void DrawPopulationSliders()
         {
             PlayerTypeInfo[] PlayerTypeInfos = {

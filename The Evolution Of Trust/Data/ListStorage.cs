@@ -154,6 +154,10 @@ namespace The_Evolution_Of_Trust
         /// <param name="number">Количество удаляемых игроков.</param>
         public void AddNewFromTop(int number)
         {
+            if(_players_list.Count == 0)
+            {
+                return;
+            }
             if (_players_list.Count < number)
             {
                 number = _players_list.Count;
