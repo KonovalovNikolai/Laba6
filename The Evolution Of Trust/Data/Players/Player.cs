@@ -48,7 +48,6 @@ namespace The_Evolution_Of_Trust
             set { _memory = value; }
         }
 
-
         public abstract string TypeName { get; }
         public abstract Color TypeColor { get; }
     }

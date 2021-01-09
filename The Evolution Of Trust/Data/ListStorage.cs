@@ -139,7 +139,7 @@ namespace The_Evolution_Of_Trust
             }
             while (number != 0)
             {
-                int index = RRandom.random.Next(end);
+                int index = RRandom.Random.Next(end);
                 _players_list.RemoveAt(index);
                 number--;
                 end--;
@@ -199,7 +199,7 @@ namespace The_Evolution_Of_Trust
             }
             while (number != 0)
             {
-                int index = RRandom.random.Next(end + 1, start + 1);
+                int index = RRandom.Random.Next(end + 1, start + 1);
                 Add(_players_list[index]);
                 Add(_players_list[index].Create());
                 _players_list.RemoveAt(index);

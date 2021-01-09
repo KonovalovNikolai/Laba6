@@ -272,20 +272,5 @@ namespace The_Evolution_Of_Trust
         {
             ShutDownThread();
         }
-
-        private void MistakeSettingTrackBar_Scroll(object sender, EventArgs e)
-        {
-
-        }
-
-        private void SelectionSettingTrackBar_Scroll(object sender, EventArgs e)
-        {
-
-        }
-
-        private void RoundsNumberTrackBar_Scroll(object sender, EventArgs e)
-        {
-
-        }
     }
 }

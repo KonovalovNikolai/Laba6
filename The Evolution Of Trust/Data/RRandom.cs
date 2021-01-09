@@ -10,9 +10,13 @@ namespace The_Evolution_Of_Trust
     {
         public static bool CheckChance(double chance)
         {
-            return chance >= random.NextDouble(); ;
+            return chance >= _random.NextDouble(); ;
         }
 
-        public static Random random = new Random();
+        private static Random _random = new Random();
+        public static Random Random
+        {
+            get { return _random; }
+        }
     }
 }
