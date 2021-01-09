@@ -8,22 +8,24 @@ namespace The_Evolution_Of_Trust
 {
     class ListStorage
     {
+        // Добавление игрока в хранилище.
         public void Add(Person pers)
         {
             _persons_list.Add(pers);
         }
 
-        //Удаление и добавление указаного числа игроков
-        //Для корректной работы число должно быть не больше
-        //половины количества игроков
-        public void Selection(int number)
-        {
-            _persons_list.Sort((x, y) => x.Score.CompareTo(y.Score));
+        ////Удаление и добавление указаного числа игроков
+        ////Для корректной работы число должно быть не больше
+        ////половины количества игроков
+        //public void Selection(int number)
+        //{
+        //    _persons_list.Sort((x, y) => x.Score.CompareTo(y.Score));
 
-            DeleteNumberOfWorst(number);
-            AddNewFromTop(number);
-        }
+        //    DeleteNumberOfWorst(number);
+        //    AddNewFromTop(number);
+        //}
 
+        // Обнуление счёта игроков.
         public void ResetScore()
         {
             foreach (var item in _persons_list)
@@ -32,37 +34,40 @@ namespace The_Evolution_Of_Trust
             }
         }
 
+        // Очищение хранилища.
         public void Clear()
         {
             _persons_list.Clear();
         }
 
+        // Получить список всех игроков.
         public List<Person> GetAllPersons()
         {
             return new List<Person>(_persons_list);
         }
 
+        // Получить список всех игроков отсортированный по именам.
         public List<Person> GetPersonsSortedByName()
         {
             return _persons_list.OrderBy(u => u.TypeName).ToList();
         }
 
+        // Получить список всех игроков отсортированный по счёту.
         public List<Person> GetPersonsSortedByScore()
         {
             return _persons_list.OrderBy(u => u.Score).ToList();
         }
 
+        // Получение игркоа по индексу.
         public Person this[int index]
         {
             get { return _persons_list[index]; }
         }
 
-        /*
-        Удаление игроков с наименьшим счётом
-        Если у игроков одинаковые счета, то удаляются случайные из них
-         - int number - количество удаляемых игроков
-         - List<Person> pers_sorted_by_score - список игроков, отсортированый по увеличению счёта
-        */
+
+        // Удаление указанное количество игроков с наименьшим счётом.
+        // Если у игроков одинаковые счета, то удаляются случайные из них.
+        // - int number - количество удаляемых игроков
         private void DeleteNumberOfWorst(int number)
         {
             //_persons_list.Sort((x, y) => x.Score.CompareTo(y.Score));
