@@ -36,16 +36,12 @@ namespace The_Evolution_Of_Trust
             this.PlayoffsTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.PlayffsTitleLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.CheatCheatNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.CheatCheatTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.TrustTrustUpDown = new System.Windows.Forms.NumericUpDown();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.TrustNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.CheatNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.TrustTrustLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.TrustCheatTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.RulesTabPage = new System.Windows.Forms.TabPage();
             this.RulesTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.MainTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
@@ -60,13 +56,6 @@ namespace The_Evolution_Of_Trust
             this.PayoffsTabPage.SuspendLayout();
             this.PlayoffsTableLayoutPanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CheatCheatNumericUpDown)).BeginInit();
-            this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TrustTrustUpDown)).BeginInit();
-            this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TrustNumericUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CheatNumericUpDown)).BeginInit();
             this.RulesTabPage.SuspendLayout();
             this.MainTableLayoutPanel.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -155,12 +144,12 @@ namespace The_Evolution_Of_Trust
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.CheatCheatTableLayoutPanel, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.TrustTrustLayoutPanel, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.TrustCheatTableLayoutPanel, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 21);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -171,39 +160,19 @@ namespace The_Evolution_Of_Trust
             this.tableLayoutPanel1.Size = new System.Drawing.Size(299, 411);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
-            // tableLayoutPanel4
+            // CheatCheatTableLayoutPanel
             // 
-            this.tableLayoutPanel4.ColumnCount = 1;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Controls.Add(this.CheatCheatNumericUpDown, 0, 1);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(101, 277);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 3;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.00001F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(195, 131);
-            this.tableLayoutPanel4.TabIndex = 5;
-            // 
-            // CheatCheatNumericUpDown
-            // 
-            this.CheatCheatNumericUpDown.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CheatCheatNumericUpDown.Location = new System.Drawing.Point(3, 55);
-            this.CheatCheatNumericUpDown.Maximum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.CheatCheatNumericUpDown.Minimum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            -2147483648});
-            this.CheatCheatNumericUpDown.Name = "CheatCheatNumericUpDown";
-            this.CheatCheatNumericUpDown.Size = new System.Drawing.Size(189, 20);
-            this.CheatCheatNumericUpDown.TabIndex = 0;
-            this.CheatCheatNumericUpDown.ValueChanged += new System.EventHandler(this.CheatCheatNumericUpDown_ValueChanged);
+            this.CheatCheatTableLayoutPanel.ColumnCount = 1;
+            this.CheatCheatTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.CheatCheatTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CheatCheatTableLayoutPanel.Location = new System.Drawing.Point(101, 277);
+            this.CheatCheatTableLayoutPanel.Name = "CheatCheatTableLayoutPanel";
+            this.CheatCheatTableLayoutPanel.RowCount = 3;
+            this.CheatCheatTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.CheatCheatTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.CheatCheatTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.00001F));
+            this.CheatCheatTableLayoutPanel.Size = new System.Drawing.Size(195, 131);
+            this.CheatCheatTableLayoutPanel.TabIndex = 5;
             // 
             // label1
             // 
@@ -244,93 +213,33 @@ namespace The_Evolution_Of_Trust
             this.label3.Text = "Обмануть\r\n-\r\nОбмануть\r\n";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // tableLayoutPanel2
+            // TrustTrustLayoutPanel
             // 
-            this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.TrustTrustUpDown, 0, 1);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(101, 3);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 3;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.00001F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(195, 131);
-            this.tableLayoutPanel2.TabIndex = 3;
+            this.TrustTrustLayoutPanel.ColumnCount = 1;
+            this.TrustTrustLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.TrustTrustLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TrustTrustLayoutPanel.Location = new System.Drawing.Point(101, 3);
+            this.TrustTrustLayoutPanel.Name = "TrustTrustLayoutPanel";
+            this.TrustTrustLayoutPanel.RowCount = 3;
+            this.TrustTrustLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TrustTrustLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.TrustTrustLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.00001F));
+            this.TrustTrustLayoutPanel.Size = new System.Drawing.Size(195, 131);
+            this.TrustTrustLayoutPanel.TabIndex = 3;
             // 
-            // TrustTrustUpDown
+            // TrustCheatTableLayoutPanel
             // 
-            this.TrustTrustUpDown.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TrustTrustUpDown.Location = new System.Drawing.Point(3, 55);
-            this.TrustTrustUpDown.Maximum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.TrustTrustUpDown.Minimum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            -2147483648});
-            this.TrustTrustUpDown.Name = "TrustTrustUpDown";
-            this.TrustTrustUpDown.Size = new System.Drawing.Size(189, 20);
-            this.TrustTrustUpDown.TabIndex = 0;
-            this.TrustTrustUpDown.ValueChanged += new System.EventHandler(this.TrustTrustUpDown_ValueChanged);
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 1;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Controls.Add(this.TrustNumericUpDown, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.CheatNumericUpDown, 0, 1);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(101, 140);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 2;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(195, 131);
-            this.tableLayoutPanel3.TabIndex = 4;
-            // 
-            // TrustNumericUpDown
-            // 
-            this.TrustNumericUpDown.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.TrustNumericUpDown.Location = new System.Drawing.Point(3, 42);
-            this.TrustNumericUpDown.Maximum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.TrustNumericUpDown.Minimum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            -2147483648});
-            this.TrustNumericUpDown.Name = "TrustNumericUpDown";
-            this.TrustNumericUpDown.Size = new System.Drawing.Size(189, 20);
-            this.TrustNumericUpDown.TabIndex = 0;
-            this.TrustNumericUpDown.ValueChanged += new System.EventHandler(this.TrustNumericUpDown_ValueChanged);
-            // 
-            // CheatNumericUpDown
-            // 
-            this.CheatNumericUpDown.Dock = System.Windows.Forms.DockStyle.Top;
-            this.CheatNumericUpDown.Location = new System.Drawing.Point(3, 68);
-            this.CheatNumericUpDown.Maximum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.CheatNumericUpDown.Minimum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            -2147483648});
-            this.CheatNumericUpDown.Name = "CheatNumericUpDown";
-            this.CheatNumericUpDown.Size = new System.Drawing.Size(189, 20);
-            this.CheatNumericUpDown.TabIndex = 1;
-            this.CheatNumericUpDown.ValueChanged += new System.EventHandler(this.CheatNumericUpDown_ValueChanged);
+            this.TrustCheatTableLayoutPanel.ColumnCount = 1;
+            this.TrustCheatTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.TrustCheatTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TrustCheatTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TrustCheatTableLayoutPanel.Location = new System.Drawing.Point(101, 140);
+            this.TrustCheatTableLayoutPanel.Name = "TrustCheatTableLayoutPanel";
+            this.TrustCheatTableLayoutPanel.RowCount = 2;
+            this.TrustCheatTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TrustCheatTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TrustCheatTableLayoutPanel.Size = new System.Drawing.Size(195, 131);
+            this.TrustCheatTableLayoutPanel.TabIndex = 4;
             // 
             // RulesTabPage
             // 
@@ -469,13 +378,6 @@ namespace The_Evolution_Of_Trust
             this.PlayoffsTableLayoutPanel.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.tableLayoutPanel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.CheatCheatNumericUpDown)).EndInit();
-            this.tableLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.TrustTrustUpDown)).EndInit();
-            this.tableLayoutPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.TrustNumericUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CheatNumericUpDown)).EndInit();
             this.RulesTabPage.ResumeLayout(false);
             this.MainTableLayoutPanel.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
@@ -498,16 +400,12 @@ namespace The_Evolution_Of_Trust
         private System.Windows.Forms.Label PlayffsTitleLabel;
         private System.Windows.Forms.Panel DrawDeskPanel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.NumericUpDown CheatCheatNumericUpDown;
+        private System.Windows.Forms.TableLayoutPanel CheatCheatTableLayoutPanel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.NumericUpDown TrustTrustUpDown;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.NumericUpDown TrustNumericUpDown;
-        private System.Windows.Forms.NumericUpDown CheatNumericUpDown;
+        private System.Windows.Forms.TableLayoutPanel TrustTrustLayoutPanel;
+        private System.Windows.Forms.TableLayoutPanel TrustCheatTableLayoutPanel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.TableLayoutPanel MenuTableLayoutPanel;
         private System.Windows.Forms.Button StartButton;

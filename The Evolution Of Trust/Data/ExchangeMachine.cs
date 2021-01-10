@@ -71,6 +71,10 @@ namespace The_Evolution_Of_Trust
         /// Выплата при одинаковом решении довериться.
         /// </summary>
         private int _trust_trust_payoff = 2;
+        public void SetTrustTrustPayoff(int value)
+        {
+            _trust_trust_payoff = value;
+        }
         public int TrustTrustPayoff
         {
             get { return _trust_trust_payoff; }
@@ -81,6 +85,10 @@ namespace The_Evolution_Of_Trust
         /// Выплаты при одинаковом решении обмануть.
         /// </summary>
         private int _cheat_cheat_payoff = 0;
+        public void SetCheatCheatPayoff(int value)
+        {
+            _cheat_cheat_payoff = value;
+        }
         public int CheatCheatPayoff
         {
             get { return _cheat_cheat_payoff; }
@@ -91,6 +99,10 @@ namespace The_Evolution_Of_Trust
         /// Выплата за обман.
         /// </summary>
         private int _cheat_payoff = 3;
+        public void SetCheatPayoff(int value)
+        {
+            _cheat_payoff = value;
+        }
         public int CheatPayoff
         {
             get { return _cheat_payoff; }
@@ -101,11 +113,20 @@ namespace The_Evolution_Of_Trust
         /// Выплата за доверие.
         /// </summary>
         private int _trust_payoff = -1;
+        public void SetTrustPayoff(int value)
+        {
+            _trust_payoff = value;
+        }
         public int TrustPayoff
         {
             get { return _trust_payoff; }
             set { _trust_payoff = value; }
         }
+
+        private int _min_payoff = -5;
+        public int MinPayoff { get { return _min_payoff; } }
+        private int _max_payoff = 5;
+        public int MaxPayoff { get { return _max_payoff; } }
 
         /// <summary>
         /// Шанс ошибки.
@@ -116,5 +137,11 @@ namespace The_Evolution_Of_Trust
             get { return _mistake_chance; }
             set { _mistake_chance = value; }
         }
+
+        private int _min_mistake_chance = 0;
+        public int MinMistakeChance { get { return _min_mistake_chance; } }
+
+        private int _max_mistake_chance = 50;
+        public int MaxMistakeChance { get { return _max_mistake_chance; } }
     }
 }

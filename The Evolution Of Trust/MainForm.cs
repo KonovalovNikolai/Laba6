@@ -127,9 +127,9 @@ namespace The_Evolution_Of_Trust
         {
             RuleSlider[] sliders =
             {
-                new RuleSlider(1, 50, "Играть {} раундов за матч", _game.RoundsNumber, _game.SetRoundsNumber),
-                new RuleSlider(1, 15, "После каждого турнира удалять {} худших игроков и копировать n лучших", _game.SelectionsNumber, _game.SetSelectionsNumber),
-                new RuleSlider(0, 50, "В каждом раунде игрок делает ошибку с вероятностью {}%", (int)(_game.ExchangeMachine.MistakeChance*100), _game.SetMistakeChange),
+                new RuleSlider(_game.MinRoundsNumber, _game.MaxRoundsNumber, "Играть {} раундов за матч", _game.RoundsNumber, _game.SetRoundsNumber),
+                new RuleSlider(_game.MinSelectionsNumber, _game.MaxSelectionsNumber, "После каждого турнира удалять {} худших игроков и копировать n лучших", _game.SelectionsNumber, _game.SetSelectionsNumber),
+                new RuleSlider(_game.ExchangeMachine.MinMistakeChance, _game.ExchangeMachine.MaxMistakeChance, "В каждом раунде игрок делает ошибку с вероятностью {}%", (int)(_game.ExchangeMachine.MistakeChance*100), _game.SetMistakeChange),
             };
 
             for(int i = 0; i < RulesTableLayoutPanel.RowCount; i++)
@@ -158,62 +158,47 @@ namespace The_Evolution_Of_Trust
 
         private void DrawPayoffs()
         {
-            TrustNumericUpDown.Value = (decimal)_game.ExchangeMachine.TrustPayoff;
-            TrustTrustUpDown.Value = (decimal)_game.ExchangeMachine.TrustTrustPayoff;
-            CheatCheatNumericUpDown.Value = (decimal)_game.ExchangeMachine.CheatCheatPayoff;
-            CheatNumericUpDown.Value = (decimal)_game.ExchangeMachine.CheatPayoff;
+            PayoffUpDown[] _payoffs = {
+                new PayoffUpDown(
+                   _game.ExchangeMachine.MinPayoff,
+                   _game.ExchangeMachine.MaxPayoff,
+                   _game.ExchangeMachine.TrustTrustPayoff,
+                   _game.ExchangeMachine.SetTrustTrustPayoff),
+                new PayoffUpDown(
+                   _game.ExchangeMachine.MinPayoff,
+                   _game.ExchangeMachine.MaxPayoff,
+                   _game.ExchangeMachine.TrustPayoff,
+                   _game.ExchangeMachine.SetTrustPayoff),
+                new PayoffUpDown(
+                   _game.ExchangeMachine.MinPayoff,
+                   _game.ExchangeMachine.MaxPayoff,
+                   _game.ExchangeMachine.CheatPayoff,
+                   _game.ExchangeMachine.SetCheatPayoff),
+                new PayoffUpDown(
+                   _game.ExchangeMachine.MinPayoff,
+                   _game.ExchangeMachine.MaxPayoff,
+                   _game.ExchangeMachine.CheatCheatPayoff,
+                   _game.ExchangeMachine.SetCheatCheatPayoff)
+            };
+
+            foreach(var payoff in _payoffs)
+            {
+                payoff.ValueChanged += PayoffUpDown_ValueChanged;
+            }
+
+            _payoffs[1].Dock = DockStyle.Bottom;
+            _payoffs[2].Dock = DockStyle.Top;
+
+            TrustTrustLayoutPanel.Controls.Add(_payoffs[0], 0, 1);
+
+            TrustCheatTableLayoutPanel.Controls.Add(_payoffs[1], 0, 0);
+            TrustCheatTableLayoutPanel.Controls.Add(_payoffs[2], 0, 1);
+
+            CheatCheatTableLayoutPanel.Controls.Add(_payoffs[3], 0, 1);
         }
-        private void TrustTrustUpDown_ValueChanged(object sender, EventArgs e)
+        private void PayoffUpDown_ValueChanged(object sender, EventArgs e)
         {
-            NumericUpDown numeric = sender as NumericUpDown;
-            if(numeric.Value > numeric.Maximum)
-            {
-                numeric.Value = numeric.Maximum;
-            }
-            if (numeric.Value < numeric.Minimum)
-            {
-                numeric.Value = numeric.Minimum;
-            }
-            _game.ExchangeMachine.TrustTrustPayoff = (int)numeric.Value;
-        }
-        private void TrustNumericUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            NumericUpDown numeric = sender as NumericUpDown;
-            if (numeric.Value > numeric.Maximum)
-            {
-                numeric.Value = numeric.Maximum;
-            }
-            if (numeric.Value < numeric.Minimum)
-            {
-                numeric.Value = numeric.Minimum;
-            }
-            _game.ExchangeMachine.TrustPayoff = (int)numeric.Value;
-        }
-        private void CheatNumericUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            NumericUpDown numeric = sender as NumericUpDown;
-            if (numeric.Value > numeric.Maximum)
-            {
-                numeric.Value = numeric.Maximum;
-            }
-            if (numeric.Value < numeric.Minimum)
-            {
-                numeric.Value = numeric.Minimum;
-            }
-            _game.ExchangeMachine.CheatPayoff = (int)numeric.Value;
-        }
-        private void CheatCheatNumericUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            NumericUpDown numeric = sender as NumericUpDown;
-            if (numeric.Value > numeric.Maximum)
-            {
-                numeric.Value = numeric.Maximum;
-            }
-            if (numeric.Value < numeric.Minimum)
-            {
-                numeric.Value = numeric.Minimum;
-            }
-            _game.ExchangeMachine.CheatCheatPayoff = (int)numeric.Value;
+            (sender as PayoffUpDown).UpdateValue();
         }
 
         private void StepButton_Click(object sender, EventArgs e)

@@ -229,6 +229,11 @@ namespace The_Evolution_Of_Trust
             set { _rounds_number = value; }
         }
 
+        private int _min_rounds_number = 1;
+        public int MinRoundsNumber { get { return _min_rounds_number; } }
+        private int _max_rounds_number = 50;
+        public int MaxRoundsNumber { get { return _max_rounds_number; } }
+
         /// <summary>
         /// Количество отбираемых игроков.
         /// </summary>
@@ -246,6 +251,11 @@ namespace The_Evolution_Of_Trust
             get { return _selected_number; }
             set { _selected_number = value; }
         }
+
+        private int _min_selections_number = 1;
+        public int MinSelectionsNumber { get { return _min_selections_number; } }
+        private int _max_selections_number = 15;
+        public int MaxSelectionsNumber { get { return _max_selections_number; } }
 
         /// <summary>
         /// Количество игроков.
