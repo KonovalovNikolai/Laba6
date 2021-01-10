@@ -50,6 +50,12 @@ namespace The_Evolution_Of_Trust
             }
             ChangeSmallestNumber(id, dif);
         }
+        /// <summary>
+        /// Увеличивает популяцию всех типов на dif, кроме типа по index.
+        /// Начинает увеличение с наименьшего, если это не ноль.
+        /// </summary>
+        /// <param name="index">Индекс неизменяемого типа.</param>
+        /// <param name="dif">Изменение популяции.</param>
         private void ChangeSmallestNumber(int index, int dif)
         {
             for(; dif!=0 ; dif--)
@@ -75,6 +81,12 @@ namespace The_Evolution_Of_Trust
                 _population[index_smallest]++;
             }
         }
+        /// <summary>
+        /// Уменьшает популяцию всех типов на dif, кроме типа по index.
+        /// Начинает уменьшение с наиюольшего.
+        /// </summary>
+        /// <param name="index">Индекс неизменяемого типа.</param>
+        /// <param name="dif">Изменение популяции.</param>
         private void ChangeBiggestNumber(int index, int dif)
         {
             for (; dif != 0; dif++)
@@ -105,20 +117,44 @@ namespace The_Evolution_Of_Trust
         {
             if (_count == _persons_number)
             {
-                _storage.SortByScore();
-                _storage.DeleteNumberOfWorst(_selected_number);
-                _count = -1;
-                _persons_number = _storage.GetPlayersNumber();
+                DeleteWorst();
                 return;
             }
             if (_count == -1)
             {
-                _storage.AddNewFromTop(_selected_number);
-                _storage.ResetScore();
-                _persons_number = _storage.GetPlayersNumber();
-                _count = 0;
+                AddNewFromTop();
                 return;
             }
+            PlayMatch();
+        }
+
+        /// <summary>
+        /// Удалить худших.
+        /// </summary>
+        private void DeleteWorst()
+        {
+            _storage.SortByScore();
+            _storage.DeleteNumberOfWorst(_selected_number);
+            _count = -1;
+            _persons_number = _storage.GetPlayersNumber();
+        }
+
+        /// <summary>
+        /// Скопировать лучших игроков.
+        /// </summary>
+        private void AddNewFromTop()
+        {
+            _storage.AddNewFromTop(_selected_number);
+            _storage.ResetScore();
+            _persons_number = _storage.GetPlayersNumber();
+            _count = 0;
+        }
+
+        /// <summary>
+        /// Начать матч.
+        /// </summary>
+        private void PlayMatch()
+        {
             for (; _count < _persons_number; _count++)
             {
                 for (int i = _count + 1; i < _persons_number; i++)
@@ -128,6 +164,11 @@ namespace The_Evolution_Of_Trust
             }
         }
 
+        /// <summary>
+        /// Отыграть раунды между двумя игроками.
+        /// </summary>
+        /// <param name="pers1">Первый игрок.</param>
+        /// <param name="pers2">Второй игрок.</param>
         private void PlayRounds(Player pers1, Player pers2)
         {
             for (int i = 0; i < _rounds_number; i++)
